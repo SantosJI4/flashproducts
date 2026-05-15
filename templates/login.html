@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[550px] border border-gray-100">
+        
+        <div class="md:w-5/12 bg-dark p-12 text-white flex flex-col justify-center relative overflow-hidden">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-kiwi/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-kiwi/10 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10">
+                <h2 class="text-4xl font-black leading-tight mb-6">
+                    Bem-vindo à <span class="text-kiwi">FlashProducts</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    Aceda à sua área de membros para gerir os seus produtos e acelerar o seu conhecimento.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="bi bi-check2-circle text-kiwi text-xl"></i>
+                        <span>Acesso vitalício aos seus cursos</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="bi bi-check2-circle text-kiwi text-xl"></i>
+                        <span>Suporte especializado 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:w-7/12 p-8 md:p-12 bg-white flex flex-col justify-center">
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="mb-6 p-4 rounded-xl {% if category == 'error' %}bg-red-50 text-red-600 border border-red-100{% else %}bg-kiwi/10 text-dark border border-kiwi/20{% endif %} flex items-center gap-3 text-sm font-bold">
+                            <i class="bi bi-exclamation-circle-fill"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div id="loginSection">
+                <h3 class="text-2xl font-extrabold text-dark mb-2">Entrar na Conta</h3>
+                <p class="text-gray-400 text-sm mb-8">Insira os seus dados para continuar</p>
+
+                <form action="/login" method="POST" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">E-mail</label>
+                        <input type="email" name="email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-dark focus:ring-2 focus:ring-kiwi focus:border-transparent outline-none transition-all placeholder:text-gray-300" placeholder="exemplo@email.com">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest">Senha</label>
+                            <a href="#" class="text-xs font-bold text-kiwi hover:text-kiwi-dark">Esqueceu a senha?</a>
+                        </div>
+                        <input type="password" name="password" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-dark focus:ring-2 focus:ring-kiwi focus:border-transparent outline-none transition-all placeholder:text-gray-300" placeholder="••••••••">
+                    </div>
+
+                    <button type="submit" class="w-full bg-kiwi hover:bg-kiwi-dark text-dark font-black py-4 rounded-xl transition-all shadow-lg shadow-kiwi/20 active:scale-[0.98] mt-4">
+                        Aceder Plataforma
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+                    <p class="text-sm text-gray-500">
+                        Ainda não tem conta? 
+                        <button onclick="toggleAuth()" class="text-dark font-bold hover:underline">Criar conta gratuita</button>
+                    </p>
+                </div>
+            </div>
+
+            <div id="registerSection" class="hidden">
+                <h3 class="text-2xl font-extrabold text-dark mb-2">Criar Nova Conta</h3>
+                <p class="text-gray-400 text-sm mb-8">Comece a sua jornada agora mesmo</p>
+
+                <form action="/register" method="POST" class="space-y-4">
+                    <input type="text" name="name" placeholder="Nome Completo" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-kiwi transition-all">
+                    <input type="email" name="email" placeholder="E-mail" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-kiwi transition-all">
+                    <input type="password" name="password" placeholder="Senha" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-kiwi transition-all">
+                    
+                    <button type="submit" class="w-full bg-dark text-white font-black py-4 rounded-xl hover:bg-gray-800 transition-all active:scale-[0.98] mt-4 shadow-xl">
+                        Finalizar Cadastro
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+                    <p class="text-sm text-gray-500">
+                        Já é membro? 
+                        <button onclick="toggleAuth()" class="text-dark font-bold hover:underline">Fazer Login</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAuth() {
+        const login = document.getElementById('loginSection');
+        const register = document.getElementById('registerSection');
+        login.classList.toggle('hidden');
+        register.classList.toggle('hidden');
+    }
+</script>
+{% endblock %}

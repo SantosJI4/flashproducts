@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-[70vh] flex items-center justify-center py-12 px-4">
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10">
+        
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-kiwi/10 rounded-full mb-4">
+                <i class="bi bi-shield-lock-fill text-kiwi text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-extrabold text-dark mb-2">Quase lá!</h1>
+            <p class="text-gray-400 text-sm">Escolha o método de pagamento ideal para finalizar a sua compra com total segurança.</p>
+        </div>
+
+        <form action="/finalizar-pedido" method="POST" class="space-y-8">
+            <div class="space-y-4">
+                <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Métodos Disponíveis</span>
+                
+                <div class="payment-option group">
+                    <input type="radio" id="pix" name="pagamento" value="pix" class="hidden peer" required>
+                    <label for="pix" class="flex items-center justify-between p-5 border-2 border-gray-100 rounded-2xl cursor-pointer transition-all peer-checked:border-kiwi peer-checked:bg-kiwi/5 hover:bg-gray-50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-xl group-hover:bg-white transition-colors peer-checked:bg-white text-dark">
+                                <i class="bi bi-lightning-charge-fill text-xl"></i>
+                            </div>
+                            <span class="font-bold text-dark">Pagar com PIX</span>
+                        </div>
+                        <div class="w-6 h-6 border-2 border-gray-200 rounded-full peer-checked:border-kiwi peer-checked:bg-kiwi flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="payment-option group">
+                    <input type="radio" id="card" name="pagamento" value="card" class="hidden peer">
+                    <label for="card" class="flex items-center justify-between p-5 border-2 border-gray-100 rounded-2xl cursor-pointer transition-all peer-checked:border-kiwi peer-checked:bg-kiwi/5 hover:bg-gray-50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-xl group-hover:bg-white transition-colors">
+                                <i class="bi bi-credit-card-2-back-fill text-xl text-dark"></i>
+                            </div>
+                            <span class="font-bold text-dark">Cartão de Crédito</span>
+                        </div>
+                        <div class="w-6 h-6 border-2 border-gray-200 rounded-full peer-checked:border-kiwi peer-checked:bg-kiwi flex items-center justify-center"></div>
+                    </label>
+                </div>
+
+                <div class="payment-option group">
+                    <input type="radio" id="boleto" name="pagamento" value="boleto" class="hidden peer">
+                    <label for="boleto" class="flex items-center justify-between p-5 border-2 border-gray-100 rounded-2xl cursor-pointer transition-all peer-checked:border-kiwi peer-checked:bg-kiwi/5 hover:bg-gray-50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-xl group-hover:bg-white transition-colors">
+                                <i class="bi bi-file-earmark-fill text-xl text-dark"></i>
+                            </div>
+                            <span class="font-bold text-dark">Pagar com Boleto</span>
+                        </div>
+                        <div class="w-6 h-6 border-2 border-gray-200 rounded-full peer-checked:border-kiwi peer-checked:bg-kiwi flex items-center justify-center"></div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-kiwi hover:bg-kiwi-dark text-dark font-black py-5 rounded-2xl text-lg transition-all shadow-xl shadow-kiwi/20 active:scale-[0.98] flex items-center justify-center gap-3 uppercase tracking-wider">
+                    Concluir Pagamento
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+                <p class="text-center text-[10px] text-gray-400 mt-6 flex items-center justify-center gap-2">
+                    <i class="bi bi-lock-fill"></i>
+                    PAGAMENTO PROCESSADO COM SEGURANÇA SSL
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Pequeno ajuste para o peer-checked funcionar nos círculos de seleção */
+    input:checked + label .rounded-full {
+        border-color: #00E467;
+        background-color: #00E467;
+    }
+    input:checked + label .rounded-full div {
+        opacity: 1;
+    }
+</style>
+{% endblock %}

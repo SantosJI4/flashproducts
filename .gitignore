@@ -1,0 +1,9 @@
+user.json
+products.json
+__pycache__/
+database/
+routes/__pycache__/
+database/__pycache__/
+static/
+admin/__pycache__/
+admin/

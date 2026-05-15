@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-12">
+    <div class="mb-10 flex items-center gap-4 text-gray-400">
+        <span class="text-kiwi font-bold">01 Carrinho</span>
+        <i class="bi bi-chevron-right text-xs"></i>
+        <span class="text-dark font-extrabold underline decoration-kiwi decoration-4 underline-offset-8">02 Pagamento</span>
+        <i class="bi bi-chevron-right text-xs"></i>
+        <span>03 Acesso</span>
+    </div>
+
+    <div class="bg-white rounded-3xl border border-gray-200 shadow-2xl overflow-hidden flex flex-col md:flex-row">
+        
+        <div class="md:w-1/2 bg-gray-50 p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100">
+            <div class="relative group">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="max-h-72 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute -bottom-4 -right-4 bg-white px-4 py-2 rounded-2xl shadow-lg border border-gray-100 flex items-center gap-2">
+                    <i class="bi bi-shield-check text-kiwi text-xl"></i>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Compra<br>Garantida</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:w-1/2 p-10 flex flex-col">
+            <div class="mb-8">
+                <span class="text-kiwi font-bold text-xs uppercase tracking-widest mb-2 block">Você está comprando:</span>
+                <h2 class="text-3xl font-extrabold text-dark leading-tight mb-4">{{ product.name }}</h2>
+                <p class="text-gray-500 leading-relaxed text-sm">
+                    {{ product.description }}
+                </p>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                <div class="flex justify-between items-center mb-2 text-sm text-gray-500">
+                    <span>Subtotal</span>
+                    <span>R$ {{ product.price }}</span>
+                </div>
+                <div class="flex justify-between items-center mb-4 text-sm text-gray-500 font-medium">
+                    <span>Taxas</span>
+                    <span class="text-kiwi">R$ 0,00</span>
+                </div>
+                <div class="h-px bg-gray-200 w-full mb-4"></div>
+                <div class="flex justify-between items-end">
+                    <span class="font-bold text-dark text-lg">Total</span>
+                    <span class="text-3xl font-black text-dark tracking-tighter">R$ {{ product.price }}</span>
+                </div>
+            </div>
+
+            <form action="/confimar-pagamento" method="POST" class="space-y-4">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                
+                <button type="submit" class="w-full bg-kiwi hover:bg-kiwi-dark text-dark font-black py-5 rounded-2xl text-lg transition-all shadow-xl shadow-kiwi/30 hover:shadow-kiwi/40 hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3" href="/confimar-pagamento/">
+                    <i class="bi bi-credit-card-2-back-fill"></i>
+                    Confirmar e Pagar Agora
+                </button>
+
+                <a href="/" class="block text-center text-gray-400 hover:text-gray-600 text-sm font-semibold transition-colors py-2">
+                    <i class="bi bi-arrow-left"></i> Cancelar e voltar para a loja
+                </a>
+            </form>
+
+            <div class="mt-8 flex justify-center gap-6 opacity-40 grayscale">
+                <i class="bi bi-lock-fill text-2xl" title="Ambiente Seguro"></i>
+                <i class="bi bi-stripe text-2xl" title="Pagamento via Stripe"></i>
+                <i class="bi bi-paypal text-2xl" title="Pagamento via PayPal"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
