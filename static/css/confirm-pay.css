@@ -1,0 +1,105 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.button-continuar {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+/* Container Principal */
+.checkout-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f4f7f6;
+}
+
+.payment-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+h1 { color: #333; margin-bottom: 10px; }
+p { color: #777; margin-bottom: 30px; }
+
+/* Grid de Opções */
+.methods-payments {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Escondendo o rádio padrão, mas mantendo funcional */
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+/* Estilizando o Label como um Card */
+.payment-option label {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #555;
+}
+
+.payment-option .icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Efeito Hover */
+.payment-option label:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+}
+
+/* QUANDO O RÁDIO ESTIVER MARCADO (+ seleciona o próximo elemento) */
+.payment-option input[type="radio"]:checked + label {
+    border-color: #007bff;
+    background-color: #e7f3ff;
+    color: #007bff;
+}
+
+/* Botão Continuar */
+.button-continuar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button-continuar:hover {
+    background-color: #218838;
+}

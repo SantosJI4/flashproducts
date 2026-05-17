@@ -1,0 +1,49 @@
+.checkout-single {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    font-family: sans-serif;
+}
+
+.checkout-card {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 700px;
+    overflow: hidden;
+}
+
+.checkout-card img {
+    width: 300px;
+    object-fit: contain;
+    background: #f4f4f4;
+}
+
+.checkout-details {
+    padding: 30px;
+}
+
+.price-total {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.confirm-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.back-link {
+    display: block;
+    margin-top: 15px;
+    color: #666;
+    text-align: center;
+    text-decoration: none;
+}
