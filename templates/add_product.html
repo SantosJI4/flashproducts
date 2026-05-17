@@ -24,9 +24,9 @@
             <div class="space-y-2">
                 <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Categoria</label>
                 <select name="category" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl p-4 focus:border-kiwi outline-none transition-all font-medium cursor-pointer">
-                    
-                        <option value="{{ categoria }}">{{ categoria }}</option>
-                    
+                        {% for category in categoria %}
+                        <option value="{{ category }}">{{ category }}</option>
+                        {% endfor %}
                 </select>
             </div>
             </div>

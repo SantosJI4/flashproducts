@@ -35,7 +35,7 @@ def produto(categoria_nome=None):
         filtered_products = [p for p in Products if p['category'].lower() == categoria_nome.lower()]
     else:
         filtered_products = Products
-    
+        
     return render_template('home.html', products=filtered_products, current_category=categoria_nome, produtos=Products)
 
 @Produtos.route('/ir_para/<int:product_id>')

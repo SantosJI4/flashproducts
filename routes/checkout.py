@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from database.produts import Products
+from routes.products import carregar_produtos
 
 Checkout = Blueprint('checkout', __name__)
+Products = carregar_produtos()
 
 @Checkout.route('/checkout', methods=['GET', 'POST'])
 def checkout_page():
+    
     if request.method == 'POST':
         pix = request.form.get('pix')
         card = request.form.get('card')
