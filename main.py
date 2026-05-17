@@ -4,6 +4,7 @@ from routes.auth import register, login
 from routes.confirm import Confirm
 from routes.add_product import AddProducts
 from routes.products import Produtos
+import os
 
 app = Flask(__name__)
 
@@ -36,5 +37,7 @@ def inject_user():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 80))
+    debug = os.environ.get("DEBUG", "false").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
     
